@@ -47,8 +47,12 @@ struct Notification {
 struct NotificationBody {
     #[serde(rename = "type")]
     notification_type: String,
-    mentioned_by: String,
-    post_uri: String,
+    #[serde(default)]
+    mentioned_by: Option<String>,
+    #[serde(default)]
+    post_uri: Option<String>,
+    #[serde(default)]
+    followed_by: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -145,8 +149,8 @@ async fn setup_client() -> Result<(Client, Keypair)> {
 async fn create_profile(client: &Client, keypair: &Keypair) -> Result<()> {
     let profile = PubkyAppUser {
         name: "AI Rand".to_string(),
-        bio: Some("A simple bot that posts random messages!".to_string()),
-        image: None,
+        bio: Some("Mention me and I will respond to you!".to_string()),
+        image: Some("pubky://338pqgzxks8hhqzs7ucfwn17w4qujcfgh58onn6dakwk3r9hxy5o/pub/pubky.app/files/003331KGWWCE0".to_string()),
         links: None,
         status: None,
     };
@@ -163,27 +167,27 @@ async fn create_profile(client: &Client, keypair: &Keypair) -> Result<()> {
     Ok(())
 }
 
-async fn create_hello_world_post(client: &Client, keypair: &Keypair) -> Result<()> {
-    let timestamp = Timestamp::now();
-    let post = PubkyAppPost {
-        content: "Hello World".to_string(),
-        kind: PubkyAppPostKind::Short,
-        parent: None,
-        embed: None,
-        attachments: None,
-    };
+// async fn create_hello_world_post(client: &Client, keypair: &Keypair) -> Result<()> {
+//     let timestamp = Timestamp::now();
+//     let post = PubkyAppPost {
+//         content: "Hello World".to_string(),
+//         kind: PubkyAppPostKind::Short,
+//         parent: None,
+//         embed: None,
+//         attachments: None,
+//     };
 
-    let post_json = serde_json::to_string(&post)?;
-    let url = format!("pubky://{}/pub/pubky.app/posts/{}", keypair.public_key(), timestamp);
+//     let post_json = serde_json::to_string(&post)?;
+//     let url = format!("pubky://{}/pub/pubky.app/posts/{}", keypair.public_key(), timestamp);
     
-    client.put(&url)
-        .body(post_json.as_bytes().to_vec())
-        .send()
-        .await?;
+//     client.put(&url)
+//         .body(post_json.as_bytes().to_vec())
+//         .send()
+//         .await?;
 
-    println!("Post created successfully!");
-    Ok(())
-}
+//     println!("Post created successfully!");
+//     Ok(())
+// }
 
 async fn get_last_read(client: &Client, keypair: &Keypair) -> Result<i64> {
     let url = format!("pubky://{}/pub/pubky.app/last_read", keypair.public_key());
@@ -215,6 +219,8 @@ async fn check_notifications(client: &Client, keypair: &Keypair) -> Result<()> {
     let nexus_url = env::var("NEXT_PUBLIC_NEXUS").map_err(|_| anyhow::anyhow!("NEXT_PUBLIC_NEXUS not found in .env"))?;
     let url = format!("{}/v0/user/{}/notifications?skip=0&limit=30&since={}", nexus_url, keypair.public_key(), last_read);
     
+    println!("Checking notifications from: {}", url);
+
     let response = http_client.get(&url).send().await?;
     let notifications: Vec<Notification> = response.json().await?;
 
@@ -224,33 +230,43 @@ async fn check_notifications(client: &Client, keypair: &Keypair) -> Result<()> {
 
     for notification in notifications {
         if notification.timestamp > last_read {
-            if notification.body.notification_type == "mention" {
-                println!("Received mention from: {}", notification.body.mentioned_by);
-                
-                let post_content = get_post_content(client, &notification.body.post_uri).await?;
-                println!("Original post content: {}", post_content);
+            match notification.body.notification_type.as_str() {
+                "mention" => {
+                    if let (Some(mentioned_by), Some(post_uri)) = (notification.body.mentioned_by, notification.body.post_uri) {
+                        println!("Received mention from: {}", mentioned_by);
+                        
+                        let post_content = get_post_content(client, &post_uri).await?;
+                        println!("Original post content: {}", post_content);
 
-                let response = generate_response(&post_content).await?;
-                println!("Generated response: {}", response);
+                        let response = generate_response(&post_content).await?;
+                        println!("Generated response: {}", response);
 
-                let timestamp = Timestamp::now();
-                let post = PubkyAppPost {
-                    content: response,
-                    kind: PubkyAppPostKind::Short,
-                    parent: Some(notification.body.post_uri),
-                    embed: None,
-                    attachments: None,
-                };
+                        let timestamp = Timestamp::now();
+                        let post = PubkyAppPost {
+                            content: response,
+                            kind: PubkyAppPostKind::Short,
+                            parent: Some(post_uri),
+                            embed: None,
+                            attachments: None,
+                        };
 
-                let post_json = serde_json::to_string(&post)?;
-                let url = format!("pubky://{}/pub/pubky.app/posts/{}", keypair.public_key(), timestamp);
-                
-                client.put(&url)
-                    .body(post_json.as_bytes().to_vec())
-                    .send()
-                    .await?;
+                        let post_json = serde_json::to_string(&post)?;
+                        let url = format!("pubky://{}/pub/pubky.app/posts/{}", keypair.public_key(), timestamp);
+                        
+                        client.put(&url)
+                            .body(post_json.as_bytes().to_vec())
+                            .send()
+                            .await?;
 
-                println!("Replied to mention successfully!");
+                        println!("Replied to mention successfully!");
+                    }
+                }
+                "follow" => {
+                    if let Some(followed_by) = notification.body.followed_by {
+                        println!("Received follow from: {}", followed_by);
+                    }
+                }
+                _ => println!("Received unknown notification type: {}", notification.body.notification_type),
             }
 
             if notification.timestamp > last_timestamp {
@@ -277,7 +293,7 @@ async fn check_notifications(client: &Client, keypair: &Keypair) -> Result<()> {
 async fn main() -> Result<()> {
     let (client, keypair) = setup_client().await?;
     create_profile(&client, &keypair).await?;
-    create_hello_world_post(&client, &keypair).await?;
+    // create_hello_world_post(&client, &keypair).await?;
 
     println!("Starting notification polling...");
     loop {
