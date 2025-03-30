@@ -1,0 +1,16 @@
+[package]
+name = "client-pubky"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pubky = "0.4.2"
+pubky-app-specs = "0.3.3"
+pubky-timestamp = "0.4.1"
+tokio = { version = "1.44", features = ["full"] }
+anyhow = "1.0.95"
+serde_json = "1.0.138"
+dotenv = "0.15.0"
+serde = { version = "1.0", features = ["derive"] }
+bip39 = "2.1.0"
+reqwest = { version = "0.12.12", features = ["json"] }
