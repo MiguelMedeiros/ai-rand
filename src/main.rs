@@ -7,6 +7,7 @@ use std::env;
 use bip39::Mnemonic;
 use serde::{Deserialize, Serialize};
 use reqwest;
+use std::fs;
 
 #[derive(Debug, Serialize)]
 struct ChatMessage {
@@ -67,16 +68,23 @@ async fn get_post_content(client: &Client, post_uri: &str) -> Result<String> {
     Ok(post.content)
 }
 
+async fn read_knowledge_base() -> Result<String> {
+    let content = fs::read_to_string("knowledge-base.txt")?;
+    Ok(content)
+}
+
 async fn generate_response(content: &str) -> Result<String> {
     let api_key = env::var("OPENAI_API_KEY").map_err(|_| anyhow::anyhow!("OPENAI_API_KEY not found in .env"))?;
     let client = reqwest::Client::new();
-
+    
+    let knowledge_base = read_knowledge_base().await?;
+    
     let request = ChatRequest {
-        model: "gpt-4o-mini".to_string(),
+        model: "gpt-4".to_string(),
         messages: vec![
             ChatMessage {
                 role: "system".to_string(),
-                content: "You are a friendly and fun bot that responds to posts in a creative and funny way. Your responses must be in English by default, but if the user's post is in another language, your response should also be in that language. Your responses must have a maximum of 1000 characters.".to_string(),
+                content: format!("You are a friendly and knowledgeable AI assistant that can discuss any topic. You have deep knowledge about Pubky, a decentralized social media platform, but you are not limited to just that. You can engage in conversations about any subject while maintaining a helpful and informative tone. You must respond in English by default, but if the user's post is in another language, your response should also be in that language. Your responses must have a maximum of 1000 characters.\n\nHere is the knowledge base about Pubky that you can reference when needed:\n\n{}", knowledge_base),
             },
             ChatMessage {
                 role: "user".to_string(),

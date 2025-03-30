@@ -1,0 +1,129 @@
+# Pubky Knowledge Base
+
+## Core Concepts
+
+### PKARR (Public Key Addressable Resource Records)
+PKARR is a system that bridges the gap between DNS and peer-to-peer overlay networks. It allows self-issued public keys to function as sovereign, publicly addressable domains. Key features:
+- Simplicity in DNS and P2P network integration
+- Sovereignty through public key-based domains
+- Accessibility to anyone with a private key
+- Scalability and resilience using Mainline DHT
+- Compatibility with existing applications through DNS over HTTPS (DoH)
+
+### Homeservers
+Homeservers are decentralized data stores in the Pubky network that:
+- Improve censorship resistance
+- Prevent single entity control
+- Allow users to redefine their data location
+- Support public and private data
+- Enable data retrieval through RESTful API
+- Facilitate user data control and credible exit
+
+### Credible Exit
+The ability to leave a platform without losing:
+- Access to data
+- Identity
+- Connections
+- Full user control and portability
+
+### Censorship Resistance
+Pubky addresses censorship through:
+- Flexible hosting with trusted servers
+- Decentralized identity using self-issued public keys
+- Data portability and redundancy
+- User-controlled moderation
+- Multiple independent data stores
+
+### Semantic Social Graph
+A system that:
+- Tags connections with meaningful metadata
+- Uses weighted relationships
+- Enables user-centric personalization
+- Supports decentralization
+- Facilitates content curation and discovery
+
+## Architecture
+
+### Pubky Core
+The foundational layer that enables:
+- Decentralized data management
+- Seamless communication between clients and data stores
+- Data sovereignty
+- System resilience
+
+### Pubky App
+A decentralized social media platform that:
+- Helps users publish and consume Pubky homeserver data
+- Provides social media features
+- Enables search and publishing capabilities
+- Supports user-controlled feeds
+- Facilitates community building
+
+## Key Features
+
+### User Control
+- Full autonomy over data
+- Control over connections
+- Customizable feeds
+- Self-regulated moderation
+- Identity sovereignty
+
+### Decentralization
+- No central authority
+- Distributed data storage
+- Peer-to-peer networking
+- User-owned identities
+- Independent hosting options
+
+### Privacy and Security
+- Encrypted communications
+- Self-sovereign identity
+- Data ownership
+- Censorship resistance
+- Secure data storage
+
+## Technical Components
+
+### DHT (Distributed Hash Table)
+- Decentralized key-value store
+- Efficient data retrieval
+- No central server dependency
+- Scalable architecture
+- Network resilience
+
+### DNS over HTTPS (DoH)
+- Encrypted DNS queries
+- Enhanced privacy
+- Security against eavesdropping
+- Standardized protocol
+- Broad compatibility
+
+### Key Pairs
+- Public and private key cryptography
+- Secure authentication
+- Digital signatures
+- Identity verification
+- Data encryption
+
+## Future Vision
+
+### Financial Integration
+- Bitcoin and Lightning Network support
+- Peer-to-peer payments
+- Decentralized financial services
+- User-controlled transactions
+- Economic autonomy
+
+### Community Development
+- Open source collaboration
+- Developer ecosystem
+- User-driven innovation
+- Protocol evolution
+- Network growth
+
+### Global Adoption
+- Multi-language support
+- Cultural adaptation
+- Local community building
+- Educational resources
+- Technical documentation 

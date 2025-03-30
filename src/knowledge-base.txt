@@ -1,0 +1,1151 @@
+├── Explore
+    ├── Concepts
+    │   ├── Censorship.md
+    │   ├── Credible Exit.md
+    │   └── Semantic Social Graph.md
+    ├── Pubky App
+    │   ├── App Architectures
+    │   │   ├── 1. Introduction.md
+    │   │   ├── 2. Client - Homeserver.md
+    │   │   ├── 3. Global Aggregators.md
+    │   │   └── 4. Custom Backend.md
+    │   ├── Backend
+    │   │   ├── Aggregator.md
+    │   │   ├── Indexer.md
+    │   │   ├── Introduction.md
+    │   │   └── Web Server.md
+    │   ├── Client
+    │   │   ├── Features
+    │   │   │   ├── Bookmarks.md
+    │   │   │   ├── Layouts.md
+    │   │   │   ├── Notifications.md
+    │   │   │   ├── Perspectives.md
+    │   │   │   ├── Posts.md
+    │   │   │   ├── Profiles.md
+    │   │   │   ├── Search.md
+    │   │   │   ├── Tags.md
+    │   │   │   └── Trends.md
+    │   │   └── Introduction.md
+    │   ├── ELI5.md
+    │   └── Introduction.md
+    ├── Pubky Core
+    │   ├── ELI5.md
+    │   ├── Homeservers.md
+    │   ├── Introduction.md
+    │   ├── Pkarr
+    │   │   ├── 0.Introduction.md
+    │   │   ├── 1.Why Pkarr?.md
+    │   │   ├── 2.Getting Started with Pkarr.md
+    │   │   ├── 3.Expectations.md
+    │   │   ├── 4.Architecture.md
+    │   │   └── ELI5.md
+    │   └── notes
+    │   │   ├── 1.Adoption.md
+    │   │   ├── 2.Incentives.md
+    │   │   └── 3.Protocols.md
+    └── Technologies
+    │   ├── DHT.md
+    │   ├── DNS.md
+    │   ├── DoH.md
+    │   ├── HTTPS.md
+    │   ├── Key Pair.md
+    │   ├── Mainline DHT.md
+    │   └── Paykit.md
+├── Readme.md
+├── TLDR.md
+├── The vision of Pubky.md
+└── index.md
+
+
+/Explore/Concepts/Censorship.md:
+--------------------------------------------------------------------------------
+ 1 | **Censorship** is the suppression or control of speech, communication, or information by a governing body or authority, often resulting in a lack of free expression and limited user autonomy.
+ 2 | 
+ 3 | Imagine you’ve been using a social platform to share your thoughts and connect with others. One day, you notice that your posts are disappearing or are no longer visible to your friends. Your reach is being reduced, and your voice is being silenced. This is an example of **censorship** at play—when someone else decides what you can and cannot say online, and what others can and cannot see.
+ 4 | 
+ 5 | ## Why Censorship is Inevitable
+ 6 | 
+ 7 | Censorship is inevitable in today's web because many popular services, like social platforms, require centralized hosting. These platforms need servers to store data, deliver content, and provide other services. As long as centralized servers are involved, someone—be it the server owner, government authority, or a corporate entity—can decide what content is allowed and what is not.
+ 8 | 
+ 9 | The reality is that many centralized platforms serve millions of users, which makes them natural targets for censorship. Server operators can be pressured to comply with local laws or corporate policies, meaning that user content can be restricted, removed, or filtered at any time.
+10 | 
+11 | However, this doesn't mean we should accept censorship without a solution. Instead, we need systems that **assume censorship is likely** and empower users to navigate around it.
+12 | 
+13 | ## How Pubky Addresses Censorship
+14 | 
+15 | In **Pubky**, the approach is not to eliminate censorship entirely—because some level of censorship will always exist where there are centralized components—but rather to provide users with a way to **circumvent** it when it happens.
+16 | 
+17 | - **Flexible Hosting**: Pubky provides a flexible hosting model using trusted servers known as [[Homeservers|homeservers]]. While these servers may be subject to censorship, Pubky ensures that users have the ability to migrate away from a censoring server whenever needed. Users can move their data, identities, and connections seamlessly, meaning they retain control even in the face of censorship.
+18 | 
+19 | - **Decentralized Identity**: In Pubky, user identities are not dependent on any single server. By using **self-issued public keys**, users maintain their identity even if they change hosting providers. This prevents identity loss when moving away from a server that engages in censorship.
+20 | 
+21 | - **Data Portability and Redundancy**: Pubky ensures that user data can be exported and re-imported across servers without any loss. Users can also use multiple servers for redundancy, minimizing the risk of any single point of failure or censorship cutting them off from their data.
+22 | 
+23 | ## Important Aspects of Censorship Resistance
+24 | 
+25 | - **Data Control**: Users should always have access to and control over their data, even if one hosting provider chooses to censor it. Pubky’s approach empowers users by ensuring they are not dependent on any one server.
+26 | - **Migration and Interoperability**: The ability to migrate data, identities, and connections between different [[Homeservers|homeservers]] helps users remain resilient against censorship. Interoperable systems mean that even if one provider blocks content, another can provide access.
+27 | - **Local Copies and Self-Hosting**: Users can keep local copies of their data, and Pubky encourages self-hosting, giving users more control over what happens to their information and ensuring their content is not subjected to centralized oversight.
+28 | 
+29 | ## Challenges and Considerations
+30 | 
+31 | - **Legal Compliance**: Censorship is often tied to legal requirements that hosting providers must comply with. Even decentralized systems will face challenges related to legal jurisdictions, and Pubky is designed to navigate but not entirely eliminate these legal issues.
+32 | - **Content Moderation**: Some forms of moderation are necessary—whether it's to filter out spam or harmful content. Pubky facilitates **user-controlled moderation**, where individuals or groups decide what they want to see, rather than a centralized authority imposing a one-size-fits-all policy.
+33 | - **Redundancy Limitations**: While Pubky's redundancy and migration features provide resilience, they depend on the presence of multiple [[Homeservers|homeservers]] options. During the early phases, users may face limited availability of alternative servers.
+34 | 
+35 | Censorship on the web is inevitable, but that doesn't mean users have to be powerless. With Pubky, you have the ability to choose your hosting, migrate your data, and maintain your identity—all key tools for resisting censorship. Pubky's design assumes censorship will happen and provides the mechanisms needed to overcome it. This empowers users with true control, ensuring that no single entity can unilaterally suppress their voice. The future of the web lies in resilient, user-first systems that put individuals back in control of their online presence.
+36 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Concepts/Credible Exit.md:
+--------------------------------------------------------------------------------
+ 1 | **Credible Exit** is the ability to leave a platform or service without losing access to your data, identity, or connections, ensuring full user control and portability.
+ 2 | 
+ 3 | This [substack post](https://subconscious.substack.com/p/credible-exit) by Gordon Brander is a good introduction to the topic. 
+ 4 | 
+ 5 | Imagine you’ve built a social profile on a platform. Over time, you start noticing that some of your posts are being restricted or your content is no longer being promoted. You don't want to lose everything you've built—your posts, connections, or even your online identity. This is where **Credible Exit** comes into play. It ensures that you can leave a platform without losing what's yours, giving you true control over your online presence.
+ 6 | 
+ 7 | It is also important for the credible exit to be feasible, as in a measure of cost, meaning the cost of exit should be within the order of magnitude of making an exit economically efficient.
+ 8 | 
+ 9 | ## Why Credible Exit is Important
+10 | 
+11 | Today, most platforms hold your data hostage. They make it difficult to leave, and if you do leave, you often lose all your posts, connections, and your ability to stay visible. This is the result of centralized control—a few big platforms deciding what can be shared and who gets to see it. They can censor you or limit your access without warning.
+12 | 
+13 | Here are some of the best examples of Credible Exit in practice:
+14 | 
+15 | - **Domain Name System (DNS)**: [[DNS]] is a classic example of a system that allows for a credible exit. If you no longer want your domain hosted with one provider, you can transfer it to another without losing control over your domain name.
+16 | - **Email Protocols (IMAP/SMTP)**: Email is another example. Users can change email providers while keeping the same email address, ensuring they don't lose their communication history or contacts.
+17 | - **Bitcoin Wallets**: Bitcoin wallets offer credible exit by allowing users to export private keys and import them into another wallet provider, retaining full control over their funds and transactions.
+18 | 
+19 | **Credible Exit** is a fundamental principle that ensures users are never locked in. It means having the freedom to move your data, identity, and content to a new service without losing anything. It gives you leverage, making sure that platforms compete for your trust rather than taking it for granted.
+20 | 
+21 | ## How Pubky Makes Credible Exit Possible
+22 | 
+23 | In **Pubky**, Credible Exit is not just an idea—it's built into the architecture. Pubky combines decentralized routing and identity with flexible, user-controlled hosting to make sure you’re always in charge.
+24 | 
+25 | - **Trusted Servers with a Safety Net**: When you join Pubky, you can use a trusted server to host your data. These servers are there to provide convenience, but you’re never stuck. If the server changes its policies or you simply want to move, Pubky allows you to seamlessly migrate your data to another server without any loss of content or followers.
+26 | 
+27 | - **Decentralized Identity**: With Pubky, your identity is not tied to any one server. You use self-issued public keys that are recognized across the network. This means you can change where your data is hosted without losing your identity or connections.
+28 | 
+29 | - **Data Portability**: Pubky’s design ensures that all of your data can be easily exported and imported between servers. This keeps your content intact and visible, regardless of where it’s hosted.
+30 | 
+31 | > _NOTE_: During Pubky's initial bootstrapping phase, credible exit may not be practically possible until more homeserver providers join. [Synonym](https://synonym.to/) is building tools to make it easy for businesses and users to self-host.
+32 | 
+33 | ## Important Aspects of Credible Exit
+34 | 
+35 | - **Protocols**: The foundation of credible exit, enabling communication and data transfer between systems.
+36 | - **Data Importance**: Differentiating between basic data (content created by users) and generated data (interactions, likes, comments), which may require different approaches for exit.
+37 | - **Dimensions of Credible Exit**: Including the ability to export data, sync data across platforms, use data in useful formats, and store data in local files.
+38 | 
+39 | ## Challenges and Considerations
+40 | 
+41 | - **Static Exports**: While GDPR regulations allow for data exports, the static nature of these exports can limit their utility for ongoing use.
+42 | - **Data Formats**: The importance of using common, useful formats for data to ensure it can be utilized elsewhere.
+43 | - **Interoperability**: The potential for multiple apps to share data through permissionless APIs, enhancing broad interoperability.
+44 | 
+45 | ## Summary
+46 | 
+47 | Credible Exit is about freedom and control. It ensures that you’re never at the mercy of a single platform or server. With Pubky, you get the convenience of using trusted servers while always having an exit strategy—one that guarantees you keep everything you’ve built online. This is the foundation of a more open, user-first web, where platforms must earn your trust rather than exploit it.
+48 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Concepts/Semantic Social Graph.md:
+--------------------------------------------------------------------------------
+ 1 | 
+ 2 | ![Semantic Social graph](Explore/images/mermaid_charts/semantic_social_graph.svg)
+ 3 | 
+ 4 | **Semantic Relationships:** Connections between users and content are tagged with meaningful metadata, capturing the context, relevance, and nature of each relationship.
+ 5 | **Weighted Connections:** Relationships aren't just binary; they carry weights that represent their strength, trust level, or relevance, enabling more sophisticated interactions.
+ 6 | **User-Centric Personalization:** Users have control over how they interact with the network, allowing them to tailor their experience based on their interests and connections.
+ 7 | **Decentralization:** There's no central authority controlling the network. Users own their identities and data, promoting privacy and sovereignty.
+ 8 | 
+ 9 | ### Why It Matters
+10 | Enhanced Content Curation: By understanding the semantic meaning and weights of relationships, users receive content that's more relevant and engaging.
+11 | Scalability: Automated tagging and weighting mechanisms scale effortlessly, accommodating growing networks without compromising performance.
+12 | Rich Interactions: Users can engage in more meaningful ways, as the network understands the context and nuances of each relationship.
+13 | 
+14 | ### Semantic Graphs in Pubky App
+15 | 
+16 | The Pubky App is a user-friendly platform that showcases the capabilities of Pubky Core and PKARR.
+17 | 
+18 | **Social Tagging:** Users can tag posts, files, links, and even peers with meaningful labels. This enriches the semantic content of the network.
+19 | Customizable Feeds: By utilizing tags and weighted relationships, users control what appears in their feeds, ensuring content relevance.
+20 | **Peer Tagging:** Assign semantic tags to peers, influencing how their content is weighted and displayed.
+21 | **Web of Relevance:** Move beyond the traditional Web-of-Trust paradigm to a network where relevance and context drive interactions.
+22 | 
+23 | ### How Pubky Applies Decentralized Networking and Social Graphing
+24 | Pubky combines decentralized identity, semantic social tagging, and weighted relationships into a cohesive system that offers unparalleled user control and personalization.
+25 | 
+26 | **Semantic Social Graphing**
+27 | Weighted Distances: Relationships aren't just connections; they have weights that represent their strength or relevance to the user.
+28 | 
+29 | **Advanced Content Curation**
+30 | Personalized Feeds: Users define what content matters to them, and the network delivers it based on semantic relevance and weighted relationships.
+31 | Dynamic Filtering: Adjust your view of the network in real-time by modifying tags and weights, ensuring your feed evolves with your interests.
+32 | 
+33 | ### Why It's Different
+34 | Pubky bridges the gap between decentralized identity management and personalized content curation, something traditional models haven't achieved.
+35 | Enhancing Privacy and Security: By eliminating centralized points of control, Pubky reduces vulnerabilities and enhances user privacy.
+36 | Promoting Open Innovation: As an open-source project, Pubky invites developers and enthusiasts to contribute, fostering a community-driven evolution of the platform.
+37 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/App Architectures/1. Introduction.md:
+--------------------------------------------------------------------------------
+ 1 | Leveraging the [[Explore/Pubky Core/Introduction|Pubky Core]] protocol as the foundational layer, we can envision a diverse array of applications with distinct functionalities. While each app can implement its own unique design patterns and user interfaces, they all share a common underlying architecture: interacting with the distributed data stores, colloquially referred to as [[Homeservers|homeservers]], through standardized read and write operations.
+ 2 | 
+ 3 | The [[Explore/Pubky Core/Introduction|Pubky Core protocol]] enables a decentralized approach to data management, facilitating seamless communication between clients and their respective data stores. This architecture promotes data sovereignty and enhances system resilience.
+ 4 | 
+ 5 | Below, we present several high-level designs that showcase the versatility of this architecture, from simple client (browser) apps that interact directly with one or several [[Homeservers|homeservers]] to more complex applications with custom aggregators and backends capable of powerful inference:
+ 6 | 
+ 7 | - [[2. Client - Homeserver|Client-Homeserver]]
+ 8 | - [[4. Custom Backend|Custom backend]]
+ 9 | - [[3. Global Aggregators|Global aggregators]]
+10 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/App Architectures/2. Client - Homeserver.md:
+--------------------------------------------------------------------------------
+ 1 | ![[Explore/images/client-homeserver.png]]
+ 2 | 
+ 3 | In this architecture, we implement a direct communication model between the client application and the home server. This approach minimizes latency and reduces system complexity by establishing a direct data flow pathway.
+ 4 | 
+ 5 | This design pattern is particularly well-suited for applications with straightforward functionality, especially those that don't require real-time interaction or data normalization. This architectural approach demonstrates optimal performance in use cases characterized by intermittent data operations, where asynchronous read/write cycles are adequate for maintaining data consistency and fulfilling application requirements.
+ 6 | 
+ 7 | To illustrate the practical applications of this architectural paradigm, consider the following implementation scenarios:
+ 8 | 
+ 9 | 1. Bookmark Management System: A client application designed to store and retrieve user bookmarks directly from the home server.
+10 | 2. File Synchronization Utility: Similar to the open-source [Syncthing](https://syncthing.net/) project, this type of application would facilitate direct file synchronization between the client and the home server.
+11 | 3. Text Snippet Repository: A lightweight application for creating, storing, and retrieving short text fragments or code snippets as [pastebin](https://pastebin.com/)
+12 | 
+13 | These implementations leverage the Pubky Core protocol to establish secure, efficient, and direct data exchange channels between the client and the home server, while the user remains with ownership of their data.
+14 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/App Architectures/3. Global Aggregators.md:
+--------------------------------------------------------------------------------
+ 1 | ![[Explore/images/global_aggregator.png]]
+ 2 | 
+ 3 | This architectural pattern implements a distributed system model centered around a global aggregation layer, eliminating the need to fetch data from a multitude (maybe thousands!) of homesevers by the client. The core component of this design is a centralized global aggregator that interfaces with multiple home servers, consuming events from each in a unified manner.
+ 4 | 
+ 5 | Key features of this architecture include:
+ 6 | 
+ 7 | 1. **Centralized Event Processing:** The global aggregator serves as a single point of convergence for event streams originating from disparate home servers across the network.
+ 8 | 2. **Policy-Driven Filtering:** The aggregators can optionally implement a configurable set of policies and filtering rules, allowing for dynamic event processing based on predefined criteria.
+ 9 | 3. **Client Flexibility and Aggregator Choice:** Clients consume data from the global aggregator stream. However, if a client finds the enforced rules of one aggregator unsuitable, it retains the flexibility to switch to an alternative global aggregator that better aligns with its requirements or selectively look for the homeservers itself.
+10 | 4. **Scalable Event Distribution:** By centralizing the aggregation process, this architecture facilitates efficient event distribution to multiple clients, potentially reducing redundant processing and network overhead.
+11 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/App Architectures/4. Custom Backend.md:
+--------------------------------------------------------------------------------
+ 1 | ![[Explore/images/custom_backend.png]]
+ 2 | 
+ 3 | This architectural design introduces a more sophisticated data flow model, incorporating an intermediary backend layer between the client application and the home server. This backend functions as a middleware, enhancing the system's flexibility and data processing capabilities.
+ 4 | 
+ 5 | The backend can be potentially comprised with many components. These components will depend on the client app needs, but these are the main ones
+ 6 | 
+ 7 | 1. __Indexer__: Responsible for data normalization, ensuring consistent data structures and optimizing query performance.
+ 8 | 2. __Aggregator__: Implements event filtering logic, allowing for selective data propagation based on predefined criteria.
+ 9 | 
+10 | 
+11 | This architecture supports two distinct data consumption patterns:
+12 | 
+13 | a) For scenarios requiring both data normalization and event filtering, the client interacts with the backend layer, as an endpoint. The aggregator processes the event stream from the home servers, applying filtering rules before passing the data to the indexer for normalization.
+14 | 
+15 | b) In cases where only data normalization is necessary, the backend can bypass or not implement the aggregator, consuming events directly from the home server via the indexer.
+16 | 
+17 | This modular approach allows for fine-grained control over data processing, enabling efficient resource utilization and optimized client-side performance based on specific application requirements.
+18 | 
+19 | An example of a complex backend that does aggregation, normalization, indexation, filtering (compliance) and powerful inference is [Pubky-Nexus](https://github.com/pubky/pubky-nexus), the backend that powers the [[Explore/Pubky App/Introduction|Pubky App]] social features.
+20 | 
+21 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Backend/Aggregator.md:
+--------------------------------------------------------------------------------
+ 1 | ## Pubky Aggregators
+ 2 | 
+ 3 | Aggregators are specialized reducers or gatekeepers that continuously scan and collect data from various sources, such as [[Homeservers|homeservers]]. They decide what data to allow in and what to keep out.
+ 4 | 
+ 5 | When the aggregator receive new events, it evaluates it against its predefined criteria. If the data meets the criteria, the aggregator allows it to pass through, making it available for further processing or storage. However, if the data doesn't meet the criteria, the aggregator blocks it, preventing it from entering the system.
+ 6 | 
+ 7 | By controlling the flow of information, aggregators play a crucial role in maintaining data quality, preventing information overload, and ensuring that only the most valuable and relevant data is used.
+ 8 | 
+ 9 | ### Characteristics
+10 | 
+11 | - **Fine-grained access controls**: Users and aggregators have granular control over what data is shared, with whom, and under what conditions, ensuring selective and secure data exchange.
+12 | - **Efficient data synchronization**: Merkle trees enable fast and efficient synchronization of incremental changes from data stores, reducing the overhead of data aggregation.
+13 | - **Normalized data schemas**: Standardized data schemas facilitate interoperability between services, making it easier to integrate and exchange data across the network.
+14 | - **Public and niche aggregators**: The network supports both large-scale, public aggregators for discoverability and smaller, niche aggregators that cater to specific communities or use cases.
+15 | - **Core user graph expansion**: The aggregation process starts with a core user graph and expands outward through connections, enabling the network to grow organically and efficiently.
+16 | - [[Censorship|Censorship resistance]]: The system's censorship resistance is achieved through a decentralized aggregation architecture, where data aggregation is distributed across a network of **independent, autonomous aggregators**. This design ensures that no single entity or node has control over the aggregation process, making it more resilient to censorship attempts.
+17 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Backend/Indexer.md:
+--------------------------------------------------------------------------------
+ 1 | The Indexer is a specialized component that plays a crucial role in the system by normalizing and transforming the aggregated data from multiple [[Homeservers|homeservers]] into a unified view. This enables cross-data store search, queries, and discovery, allowing users to access and analyze data from various sources in a seamless and efficient manner.
+ 2 | 
+ 3 | ### Characteristics
+ 4 | 
+ 5 | 1. **Data Normalization**: The Indexer normalizes the data from multiple sources, handling differences in format, structure, and schema. This involves transforming the data into a consistent format, resolving data conflicts, and ensuring that the data is accurate and reliable.
+ 6 | 2. **Data Transformation**: The Indexer transforms the normalized data into a unified view, making it possible to query and analyze the data across multiple [[Homeservers|homeservers]]. This unified view enables users to access data from different sources as if it were a single, cohesive dataset.
+ 7 | 3. **Data Integrity**: The Indexer ensures data integrity through secure synchronization protocols, guaranteeing that the indexed data is consistent and up-to-date. This involves implementing measures to prevent data corruption, ensuring that data updates are propagated across all data stores, and maintaining a high level of data quality and accuracy.
+ 8 | 4. **Scalability**: The Indexer is designed to handle large volumes of data from multiple sources, ensuring that it can scale to meet the needs of a growing user base and increasing data demands.
+ 9 | 
+10 | By normalizing, transforming, and ensuring the integrity of the data, the Indexer provides a robust and scalable solution for cross-data store search, queries, and discovery
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Backend/Introduction.md:
+--------------------------------------------------------------------------------
+ 1 | The Backend is responsible for collecting ([[Aggregator|aggregators]]) and organizing ([[Indexer|indexer]]) data from various sources, known as [[Homeservers|homeservers]].
+ 2 | 
+ 3 | ![backend](Explore/images/pubky-backend.png)
+ 4 | 
+ 5 | Imagine you're trying to find a specific document in a large library. The backend is like a librarian who searches through the shelves, finds the right documents, and prepares them for you to use. This ensures that the data is accurate, up-to-date, and in a format that's easy to work with.
+ 6 | 
+ 7 | ### Main components
+ 8 | 
+ 9 | - [[Aggregator|Aggregators]] execute a **data retrieval protocol** to obtain data from **data storage**, initiating a process that retrieves and collects data from various sources.
+10 | - [[Indexer|Indexers]] receive aggregated data from the **Aggregators** and initiate a rigorous **data normalization** process, transforming and converting the data into a standardized format to ensure consistency and accuracy.
+11 | - [[Web Server|Web servers]] provide the requested data to [[Explore/Pubky App/Client/Introduction|Pubky client]]
+12 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Backend/Web Server.md:
+--------------------------------------------------------------------------------
+ 1 | The system comprises a suite of **backend services** that orchestrate the integration of **data feeds**, **search functionality**, and **user interface configurations**. The system provides a unified platform for data ingestion, processing, and presentation, enabling seamless interactions between the frontend and backend components. 
+ 2 | 
+ 3 | ### Services
+ 4 | 
+ 5 | - __Feeds__ - Curated views of aggregated data presented to users. Can include timelines, [[Tags|tags]], [[Profiles|profiles]], etc.
+ 6 | - __Search__ - Services that index aggregated data and enable full text/attribute searches.
+ 7 | - __Identity__ - It provides single sign-on through self-sovereign credentials. 
+ 8 | - [Payments](Paykit.md) - It handles microtransactions like tipping within a peer-to-peer economy.
+ 9 | 
+10 | ### Architecture
+11 | 
+12 | The web server can be designed and implemented using various architectural patterns, depending on the specific requirements of the data request workflow. Two prominent architectural styles that can be employed are:
+13 | 
+14 | - **Monolithic Architecture**: A **single-tiered architecture** where the web server is constructed as a self-contained unit, encompassing all necessary components and functionality. This approach is characterized by a **tightly-coupled** design, where all components are integrated into a single executable or deployable unit.
+15 | - **Microservices Architecture**: A **multi-tiered architecture** where the web server is decomposed into a collection of **loosely-coupled**, independent services that communicate with each other using **APIs** and **messaging protocols**. Each microservice is responsible for a specific **business capability** or **data domain**, enabling greater flexibility, scalability, and resilience.
+16 | 
+17 | The choice of architecture depends on various factors, including **data request patterns**, **traffic volume**, **performance requirements**, **development team expertise**, and **maintenance considerations**.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Bookmarks.md:
+--------------------------------------------------------------------------------
+1 | # Bookmarks
+2 | 
+3 | Bookmarks are a feature that allows you to privately save post for later reference. Here are some ways you can use bookmarks:
+4 | 
+5 | 1. **Save for later reading**: If you come across a post that you don't have time to read or engage with immediately, you can bookmark it to read later when you have more time.
+6 | 2. **Reference material**: Bookmarks can serve as a repository for tweets that contain useful information, such as articles, tutorials, or resources, that you might need to refer to later. In that case, you can organise the posts by topic.
+7 | 3. **Private note-taking**: Bookmarks can serve as a private note-taking system, allowing you to save tweets that you want to remember without having to publicly like or retweet them.
+8 | 
+9 | To bookmark a post, simply click or tap the "Bookmark" icon (it looks like a ribbon) on the post. You can access your bookmarked posts by clicking the button on top of the page.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Layouts.md:
+--------------------------------------------------------------------------------
+1 | # Layouts
+2 | 
+3 | Pubky client offers multiple customizable UI layouts for users that prefer different _column_, _grid_, and _list_ layouts for their feeds.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Notifications.md:
+--------------------------------------------------------------------------------
+ 1 | # Notifications
+ 2 | 
+ 3 | Pubky client tracks various event or activities the user may be interested in, and provides relevant notifications for interactions and other relevant activity to the user. Notifications are a way to keep you informed about what's happening in the app, even when you're not actively browsing your timeline.
+ 4 | 
+ 5 | Here are some common types of notifications you might receive:
+ 6 | 
+ 7 | 1. **Mentions**: When someone mentions you in a [[Posts|post]], you'll receive a notification. This means they've included your public key (__pk:pubky__) in their [[Posts|post]].
+ 8 | 2. **Replies**: If someone replies to one of your [[Posts|post]], you'll get a notification.
+ 9 | 3. **Re-posts**: If someone re-posts one of your posts, you'll get a notification.
+10 | 4. **Follows**: When someone new follows you, you'll receive a notification.
+11 | 5. **Quote Posts**: If someone quotes one of your posts, you'll receive a notification.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Perspectives.md:
+--------------------------------------------------------------------------------
+1 | # Perspectives
+2 | 
+3 | Users can save any custom-filtered view or feed as a “perspective” which is basically a custom template of settings of tags, weights, users, reach, and trends. Perspectives can also save custom UI layouts for the user.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Posts.md:
+--------------------------------------------------------------------------------
+ 1 | # Posts
+ 2 | 
+ 3 | In Pubkey client, a **post** is a message that a user publishes on the platform. Posts are the core content and they can contain a variety of information, including:
+ 4 | 
+ 5 | 1. **Text**: There is not text limitation of plain text, which can include words, phrases, sentences, or even just a single character.
+ 6 | 2. **Media**: Post can include various types of media, such as images and videos.
+ 7 | 3. **[[Tags|Tags]]**: It is a keyword or phrase preceded by the "__#__" symbol, which help categorize and make post discoverable by topic.
+ 8 | 4. **Mentions**: References to other Pubky users, denoted by the "pk" keyword which notify them of the post.
+ 9 | 5. **Links**: URLs to external websites, articles, or other online content.
+10 | 6. **Emojis**: Small images or icons used to convey emotions or add tone to the tweet.
+11 | 
+12 | Users also can re-post and reply to posts
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Profiles.md:
+--------------------------------------------------------------------------------
+ 1 | # Profiles
+ 2 | 
+ 3 | In Pubky client, a **profile** refers to a user's personal page on the app, which displays their information, posts, and other content. A Pubky profile is a unique identity that represents a public-key.
+ 4 | 
+ 5 | Here are some key components of a Pubky profile:
+ 6 | 
+ 7 | 1. **Username**: A unique handle or identifier that represents the user, often preceded by the "pk" keyword(e.g. _pk:uudfeafc1c6dhxxnaiyuzss5ln9i1ikpb8syht46qpnx4ksi6ho_).
+ 8 | 2. **Profile picture**: A small image that represents the user, often a photo or logo.
+ 9 | 4. **Bio**: A short description of the user, often including information about their interests, profession, or personality.
+10 | 6. **Website**: A link to the user's personal website, blog, or other online presence.
+11 | 7. **Posts**: The user's posts, which are displayed in reverse chronological order (newest tweets first).
+12 | 8. **Followers**: The number of users who follow the profile, indicating the size of their audience.
+13 | 9. **Following**: The number of users that the profile follows, indicating the accounts they're interested in.
+14 | 10. **Lists**: The number of lists the user has created or been added to, which are curated groups of accounts.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Search.md:
+--------------------------------------------------------------------------------
+1 | # Search
+2 | 
+3 | While Tags & Filters are the primary sorting tools, the app also provides limited traditional search capabilities.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Tags.md:
+--------------------------------------------------------------------------------
+ 1 | # Tags
+ 2 | 
+ 3 | They are keywords or phrases that are added to a tweet to help users find and engage with the content. Users can publicly assign contextual tags, like hashtags, to any other user or post. Tags can be used to filter posts and users. Users can also choose custom weighting of tags when filtering.
+ 4 | 
+ 5 | **How do tags work?**
+ 6 | 
+ 7 | 1. **Hashtags**: Tags are denoted by the "#" symbol, followed by a word or phrase. For example, #Pubky, #privacy, or #segwit.
+ 8 | 2. **Clickability**: When you click on a tag, Pubky client takes you to a page that displays all the posts that have used that same tag.
+ 9 | 3. **Discovery**: Tags help users discover new content, accounts, and conversations related to a specific topic.
+10 | 4. **Categorization**: Tags help categorize posts, making it easier for users to find and engage with content that interests them.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Features/Trends.md:
+--------------------------------------------------------------------------------
+1 | # Trends
+2 | 
+3 | Pubky client can provide statistical views of the data it has access to and then establish visualizations and leaderboard lists of trending posts, tags, and users.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Client/Introduction.md:
+--------------------------------------------------------------------------------
+ 1 | # Pubky Client
+ 2 | 
+ 3 | ![pubkey-client](Explore/images/pubky-header.png)
+ 4 | 
+ 5 | The Pubky client will be available as both a desktop application and a hosted website service (standard website) that allows users to interface with the social media layer of [[Explore/Pubky App/Backend/Introduction|Pubky Backend]] using [Synonym](https://synonym.to/) hosted services.
+ 6 | 
+ 7 | Using the library analogy again, the Pubky Client is like a personalized research assistant who takes the prepared documents from the librarian ([[Explore/Pubky App/Backend/Introduction|backend]]) and creates a customized report just for you. This report is designed to be easy to read and understand, with all the relevant information presented in a clear and concise manner.
+ 8 | 
+ 9 | - Users are able to take control of the data and exit the Synonym hosted services and run their own without hampering discoverability ([[Credible Exit|credible exit]]).
+10 | 
+11 | - Pubky client uses the open [[Explore/Pubky Core/Introduction|Pubky Core]] for nearly all features, allowing users to avoid censorship by choosing self-hosting or alternate hosts without losing followers or integrity. 
+12 | 
+13 | - Pubky also features support for [[Paykit|paykit]], our open payment protocol for coordinating payments among peers supporting various methods. This allows users to create sub-accounts from master wallets for familiar payment experiences. This suite of features removes any requirement from [Synonym](https://synonym.to/) to custody user funds, while allowing for users to set up subscriptions, recurring payments, paywalls, etc, in a P2P way. This feature will not be in the first launch version of Pubky app, but it is worth noting that next year we will enable all users to buy and sell data in this way.
+14 | 
+15 | - Communities facilitate moderation and discovery around shared interests.
+16 | 
+17 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/ELI5.md:
+--------------------------------------------------------------------------------
+ 1 | ## ELI5: Pubky App
+ 2 | 
+ 3 | Imagine you're at a massive party where everyone is sharing stories, showing pictures, and having interesting conversations. You get to decide who you talk to and what stories you listen to. You have full control over how you interact with people—choosing who to trust and which conversations to join. This is what **Pubky App** is like for the internet—it gives you the power to choose who you connect with and what you share, just like you would at a party, without anyone else deciding for you.
+ 4 | 
+ 5 | **Pubky App** is like having your own personal party host that you can fully control. Instead of letting big companies decide who sees your posts or what shows up in your feed, **Pubky App** gives you the power. It lets you decide which content you see, who you interact with, and how you organize your online world.
+ 6 | 
+ 7 | - **Your Rules, Your Control**: Pubky App lets you control your connections with simple rules. If you only want to hear from your closest friends or people who share your hobbies, you can easily decide that. There are no hidden algorithms deciding what you should pay attention to—you are the one in charge.
+ 8 | 
+ 9 | - **Tags and Trust**: With Pubky, you can tag people, posts, and content based on how much you trust them or how relevant they are to you. This means you can filter out the noise and focus on the people and content that really matter.
+10 | 
+11 | - **Move Anytime**: Imagine if you wanted to leave the party and join a different one, but still keep all your friends and stories with you. Pubky App lets you do that too. You can switch to a new service or hosting provider whenever you want, without losing your posts, friends, or identity. You're never locked in.
+12 | 
+13 | So, with **Pubky App**, you're in charge of your online world—deciding who you talk to, what you see, and how you share. It’s about making the internet feel more like a real conversation with the people you care about, instead of letting algorithms decide for you.
+14 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky App/Introduction.md:
+--------------------------------------------------------------------------------
+ 1 | ![pubkey-app](Explore/images/pubky-app.png)
+ 2 | 
+ 3 | > Synonym will be initially hosting: [[Homeservers|homeserver]] and [[Explore/Pubky App/Introduction|Pubky App]]
+ 4 | 
+ 5 | ## Overview
+ 6 | 
+ 7 | Pubky-app's initial focus is building a decentralized social media protocol.
+ 8 | 
+ 9 | ## Key aspects
+10 | 
+11 | - **Data Ownership**: Users have full autonomy over their data, hosting it on **independent [[Homeservers|homeservers]]** that are decentralized and distributed across the network. This approach enables users to maintain **control** and **ownership** of their data, while also ensuring **data sovereignty** and **privacy**. 
+12 | - **Profiles**: The system employs a **decentralized data storage** approach, where **post**, **comment**, and **like** data are stored in association with **user profiles**.
+13 | - [[Aggregator|Aggregators]] collecting social graphs
+14 | - Feeds of followings' activities
+15 | - [[Search|Searching]] profiles and posts
+16 | - Notification delivery through [[Explore/Pubky App/Backend/Introduction|aplication backends]] 
+17 | - Distributed moderation through user blocking
+18 | 
+19 | ## Components
+20 | 
+21 | The Pubky App is a complex system that can be broken down into two main components: the [[Explore/Pubky App/Backend/Introduction|backend]] and the [[Explore/Pubky App/Client/Introduction|client]]. These two pieces work together to provide a seamless user experience.
+22 | 
+23 | ##### Backend: The Data Organizer
+24 | 
+25 | It collects and organizes data from various sources, processing it into a usable format.
+26 | 
+27 | ##### Client: The User Interface
+28 | 
+29 | It is the part of the Pubky App that you interact with directly. It's responsible for taking the organized data from the Backend and presenting it to you in a visually appealing and easy-to-understand way.
+30 | 
+31 | ## MVP Architecture
+32 | 
+33 | The early versions of Pubky app take some shortcuts over the [[Explore/Pubky Core/Introduction|Pubky Core]] design. The MVP app is centralized, therefore we saved time and complexity by aggregating functionality into fewer components. The main two components are the `Homeserver` and the `Indexer`
+34 | 
+35 | - The [[Homeservers|homeservers]] fulfils the function of `data stores`, republishing users keys to [[0.Introduction|PKARR]] and it acts also as an identity-provider (Oauth-like sign-in). Users maintain a trust relationship with the homeserver.
+36 | - The `Indexer` fulfils the function of the [[Explore/Pubky App/Backend/Introduction|backend]] for the Pubky App. 
+37 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/ELI5.md:
+--------------------------------------------------------------------------------
+ 1 | # Explaining Pubky Core Like You're 5 Years Old
+ 2 | 
+ 3 | Imagine you have a special toy castle that you built, and you want your friends to come and play with it. Maybe you set up your castle in your backyard, or in the park, or at your grandma's house. You tell your friends where it is so they can come play. 
+ 4 | 
+ 5 | Now, suppose you chose the park, but it is closed, or someone says you can't keep your castle there anymore. No worries!
+ 6 | 
+ 7 | You Move the Castle: You pick up your castle and set it up somewhere else, like your backyard.
+ 8 | You Tell Your Friends: You let your friends know the new spot so they can still come and play.
+ 9 | So, what is Pubky Core?
+10 | 
+11 | **Pubky Core** is like you being in charge of where your stuff lives on the internet. Even if things change—like someone tries to block your stuff or you decide to move it—you have the power to:
+12 | 
+13 | **Choose Where Your Data Lives**: Just like you decide where to place your castle, Pubky Core lets you decide where your information is stored online.
+14 | 
+15 | **Move It When Needed**: If you have to change where your data is kept (like moving your castle), you can do that easily.
+16 | 
+17 | **Update the Directions**: You can tell everyone where to find your data, so your friends can always access it, no matter where it is.
+18 | 
+19 | ## Why is Pubky Core Special?
+20 | 
+21 | **You're in Control**: You decide where your data is stored on the internet, and you can change it whenever you need to.
+22 | 
+23 | **Stay Connected Despite Changes**: If something happens—like censorship or a website blocking you—you can move your data to a new place, and people can still find it.
+24 | 
+25 | **Freedom to Share**: No one can stop you from sharing your stuff. You always have the ability to let others access your data by updating its location.
+26 | 
+27 | ## In Simple Terms:
+28 | 
+29 | **You Control the Location of Your Data**: Just like moving your castle, you choose where your online information lives.
+30 | 
+31 | **Adaptable to Change**: If things change or someone tries to stop you, you can move your data and keep sharing without losing anything.
+32 | 
+33 | **Always Accessible**: By updating where your data is stored, your friends (or anyone) can always find and see it.
+34 | 
+35 | So, Pubky Core empowers you to manage where your data is on the internet. It ensures that even if things change—like being censored or needing to move—you can keep your data accessible and tell others where to find it. It's all about you being in control, just like deciding where to set up your favorite toy so your friends can always come and play!
+36 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Homeservers.md:
+--------------------------------------------------------------------------------
+ 1 | The Pubky network allows multiple, independent data stores, known as "homeservers." This improves [[Censorship|censorship-resistance]] and prevents any single entity from controlling the flow of information, or locking people & data in as a walled garden. 
+ 2 | 
+ 3 | Homeservers are meant to represent a primary place to retrieve data from a specific [[0.Introduction|PKARR]] public key, but the user can redefine the location of their homeserver at will by updating their [[0.Introduction|PKARR]] in [[DHT|mainline DHT]]. 
+ 4 | 
+ 5 | ## Public vs Private Data
+ 6 | 
+ 7 | Current implementations across Pubky currently only support public, unencrypted data use cases. This does not prevent applications from using encrypted data within homeservers, we simply haven't implemented that set of features in any direct way yet. Feel free to contribute!  
+ 8 | 
+ 9 | ## Data Retrieval and Synchronization
+10 | 
+11 | - **API**: Any service can access data through a RESTful API 
+12 | 
+13 | ## Decentralized Storage Architecture
+14 | 
+15 | - Homeservers can be operated by individuals, cooperatives, or commercial entities, with the option for anonymous operation, promoting a decentralized and resilient storage ecosystem where users could tune their preferred redundancy while maintaining the benefits of a central homeserver.
+16 | - We do not yet have any mirroring or replication tools available yet. Feel free to build with us!
+17 | 
+18 | ## User Data Control and Credible Exit
+19 | 
+20 | - The current network is being bootstrapped by Synonym's first homeserver, which supports key accounts as a service, as well as all services required to operate the [[Explore/Pubky App/Introduction|pubky App]]. 
+21 | - While Synonym is currently not charging fees for homeserving, it is totall possible for anyone to run their own homerserver and require service fees or peer-to-peer micropayments, or any other requirement, to improve data redundancy and competition.
+22 | - Synonym does not control who can join or serve data on the network, but in order to truly have a [[Credible Exit|"credible exit"]] the network will need to mature to have more providers of homeservers and Pubky applications.
+23 | - We will also need to make it as easy as possible for people to host their own homeservers, and to host homerserver clouds.
+24 | - We also need to ensure that applications remain performant & reliable as the network fragments.
+25 | 
+26 | ## WIP
+27 | - **Merkle tree-based versioning**: Merkle trees to manage versioning and conflict resolution, ensuring efficient data synchronization and minimizing data inconsistencies.
+28 | - **Event Stream**: Fetch homeserver events via publish-subscribe (Pub/Sub) messaging system, enabling efficient and scalable data retrieval.
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Introduction.md:
+--------------------------------------------------------------------------------
+ 1 | ## Pubky Core Overview
+ 2 | 
+ 3 | ![pubky-core](Explore/images/pubky-core.png)
+ 4 | 
+ 5 | Pubky Core is built on a few core concepts:
+ 6 | 
+ 7 | - **[[Homeservers|Homeserver]]** - Decentralized data storage nodes that host user data. Data is encrypted at rest.
+ 8 | 
+ 9 | - **[[0.Introduction|PKARR]]** - Self-issued public keys that function as sovereign, publicly addressable domains are used to resolve the previous components.
+10 | 
+11 | Pubky Core's distributed architecture aims to provide user autonomy through [[Credible Exit|credible exit]] between interchangeable components.
+12 | 
+13 | - **[[1. Introduction|Pubky App Architectures]]** can be very diverse. From simple web client applications that connect to a single [[2. Client - Homeserver|homeserver]] for data storage and retrieval to [[4. Custom Backend| complex backends]]  that do aggregation and powerful inference over many **[[Homeservers|homeservers]]** creating abstractions such as social media with [[Semantic Social Graph|semantic social graph]].
+14 | 
+15 | ## Target Users
+16 | 
+17 | Pubky Core is made for developers and builders of internet software products. We will actively work to cultivate a community of builders and startups using our tech.
+18 | 
+19 | [[Explore/Pubky App/Introduction|Pubky App]] is made for anyone interested in social media and online publishing that wants new ways to control their data and more control over which posts they see.
+20 | 
+21 | ## Why? What is the reward?
+22 | 
+23 | The reward for everyone is a more open, privacy-focused, usable, modular and secure web. The reward for [Synonym](https://synonym.to/) as lead of this project is to be positioned to disrupt Big Tech as an industry, gain user recognition and hopefully reputation through the effort of building a decentralized ecosystem. The ultimate potential is for [Synonym](https://synonym.to/) to become a major player in online publishing & social media, while also monetizing in ways similar to Google (e.g., search and aggregation over the web -> search / aggregation and tools for sovereign data stores), as well as opportunities to introduce new users to our ecosystem of products and services (e.g., bitcoin payments infrastructure)
+24 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Pkarr/0.Introduction.md:
+--------------------------------------------------------------------------------
+ 1 | ## Public-Key Addressable Resource Records
+ 2 | 
+ 3 | [PKARR](https://pkarr.org) is a revolutionary system that bridges the gap between the Domain Name System ([[DNS]]) and peer-to-peer overlay networks. It allows self-issued public keys to function as sovereign, publicly addressable domains. This means that anyone with a private key can have a domain that is accessible to everyone.
+ 4 | 
+ 5 | The core idea is to streamline the process of publishing and resolving resource records for keys, leveraging the Distributed Hash Table ([[DHT]]) for efficient and scalable data distribution.
+ 6 | 
+ 7 | ## Key Features
+ 8 | 
+ 9 | - **Simplicity**: PKARR streamlines the integration between [[DNS]] and peer-to-peer networks.
+10 | - **Sovereignty**: Public keys can be used as domains, enabling users to maintain control over their digital identities.
+11 | - **Accessibility**: The system is designed to be accessible to anyone capable of maintaining a private key.
+12 | - **Scalability and Resilience**: Designed with scalability and resilience in mind, using the [[Mainline DHT]] for storing ephemeral data, and employing caching strategies to minimize [[DHT]] traffic.
+13 | - **Compatibility with Existing Applications**: Supports existing applications through [[DNS]] over [[HTTPS]] ([[DoH]]) queries to PKARR servers, ensuring broad compatibility.
+14 | 
+15 | ## How It Works
+16 | 
+17 | 1. **Publishing Records**: To publish resource records for a key, create a small encoded [[DNS]] packet (<= 1000 bytes), sign it, and publish it on the DHT. This can be done directly or through a relay if necessary.
+18 | 2. **Resolving Records**: To find resources associated with a key, applications can query the [[DHT]] directly or through a relay, verifying the signature themselves.
+19 | 3. **Fallback for Existing Applications**: Applications unaware of PKARR can make normal [[DNS]] Queries over [[HTTPS]] (DoH) to PKARR servers, ensuring accessibility.
+20 | 4. **Caching and Republishing**: Both clients and PKARR servers cache records extensively to improve scalability. The [[DHT]] drops records after a few hours, necessitating periodic republishing to keep records alive.
+21 | 
+22 | For more technical details on PKARR's architecture and how it works, refer to the [[4.Architecture|architecture]] note.
+23 | 
+24 | ## Getting Started
+25 | 
+26 | [To start using PKARR](2.Getting%20Started%20with%20Pkarr.md), you can visit the [web app demo](https://app.pkarr.org) or explore the Rust examples provided in [PKARR repository](https://github.com/Nuhvi/pkarr/).
+27 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Pkarr/1.Why Pkarr?.md:
+--------------------------------------------------------------------------------
+ 1 | This note explores the motivation behind [[0.Introduction|PKARR]], addressing the challenges of distributed semantics, databases, and discovery.
+ 2 | 
+ 3 | In pursuit of a sovereign, distributed, and open web, we identify three challenges:
+ 4 | 
+ 5 | 1. **Distributed Semantics** `Everything expressed as keys and metadata`
+ 6 |    Developing interoperable semantics for verifiable metadata about a set of public-keys that form a digital identity, complete with reputation, social graph, credentials, and more.
+ 7 | 
+ 8 | 2. **Distributed Database(s)** `Anyone can host the data`
+ 9 |    Verifiable data alone is insufficient; a host-agnostic database is essential for an open web, as opposed to walled gardens.
+10 | 
+11 | 3. **Distributed Discovery** `Where is the data?`
+12 |    But before that, you need to efficiently and consistently discover the multiple hosts for a given data-set.
+13 | 
+14 | Addressing Distributed Discovery first makes the most sense for several reasons:
+15 | 
+16 | - The difficulty of these three challenges inversely correlates with their order.
+17 | - The marginal utility of solving these challenges positively correlates with their order.
+18 | 
+19 |   In existing and emerging open social network protocols, users do tolerate limited interoperability between clients, second-class identifiers controlled by hosting or domain servers, inefficient or non-existent conflict-free replication between data stores, and the absence of local-first or offline support. However, their most common complaints involve unavailability, censorship, deplatforming, and difficulty in securely managing keys.
+20 | 
+21 | - Distributed Discovery offers the greatest assured leverage by abstracting over current and emerging solutions for (1) and (2) as they compete, complement, and develop independently, all while maintaining the same long lasting identifier, so you don't have to start from scratch or be locked in.
+22 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Pkarr/2.Getting Started with Pkarr.md:
+--------------------------------------------------------------------------------
+ 1 | This guide will help you understand how to publish and resolve resource records using [[0.Introduction|PKARR]].
+ 2 | 
+ 3 | ## Publishing Resource Records
+ 4 | 
+ 5 | To publish resource records for your key, you need to sign a small encoded [[DNS]] packet (<= 1000 bytes) and publish it on the DHT. This can be done through a relay if necessary.
+ 6 | 
+ 7 | ## Resolving Resource Records
+ 8 | 
+ 9 | To resolve some key's resources, applications can query the [[DHT]] directly or through a relay. They will then verify the signature themselves.
+10 | 
+11 | ## DNS Queries Over HTTPS
+12 | 
+13 | Existing applications unaware of [[0.Introduction|PKARR]] can make normal [[DNS]] Queries over [[HTTPS]] ([[DoH]]) to [[0.Introduction|PKARR]] servers.
+14 | 
+15 | ## Caching and Scalability
+16 | 
+17 | Clients and [[0.Introduction|PKARR]] servers cache records extensively to minimize [[DHT]] traffic and improve scalability. The [[DHT]] drops records after a few hours, so it's important to republish records periodically.
+18 | 
+19 | ## Next Steps
+20 | 
+21 | For more technical details on [[0.Introduction|PKARR]]'s architecture and how it works, refer to the [[4.Architecture|architecture]] note.
+22 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Pkarr/3.Expectations.md:
+--------------------------------------------------------------------------------
+ 1 | Understanding the expectations and limitations of [[0.Introduction|PKARR]] is crucial for effective use. This note outlines what [[0.Introduction|PKARR]] is not and what users should expect.
+ 2 | 
+ 3 | ## Not a Storage Platform
+ 4 | 
+ 5 | [[0.Introduction|PKARR]] is not a storage platform. Records are ephemeral and need to be refreshed regularly to remain on the DHT.
+ 6 | 
+ 7 | ## Not a Real-time Communication Medium
+ 8 | 
+ 9 | [[0.Introduction|PKARR]] is not designed for real-time communication. It is optimized for infrequent updates and heavy caching to reduce traffic.
+10 | 
+11 | ## Rate Limiting and Proof of Work
+12 | 
+13 | Expectations include enforcing harsh rate-limiting and possibly demanding proof of work for updates.
+14 | 
+15 | ## Caching and Propagation Time
+16 | 
+17 | Records are heavily cached, and updates might take some time to propagate. In case of a cache miss, querying the [[DHT]] might take a few seconds.
+18 | 
+19 | ## Next Steps
+20 | 
+21 | For a deeper understanding of why [[0.Introduction|PKARR]] was created and its motivation, refer to the [[1.Why Pkarr?|why PKARR?]] note.
+22 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Pkarr/4.Architecture.md:
+--------------------------------------------------------------------------------
+ 1 | In-depth look at the architecture of [[0.Introduction|PKARR]], including its components and how they interact.
+ 2 | ## Components
+ 3 | 
+ 4 | - **Client**: Applications or users that publish or query resource records.
+ 5 | - **Relay**: Optional intermediary that helps clients behind NAT or firewall to communicate with the [[DNS]].
+ 6 | - **[[DNS]]**: The overlay network used for storing and retrieving resource records.
+ 7 | - **Republisher**: Services that keep resource records alive on the [[DNS]] by periodically republishing them.
+ 8 | 
+ 9 | ## Interaction Flow
+10 | 
+11 | 1. **Publishing**: Clients publish resource records to the [[DNS]] through a relay.
+12 | 2. **Republishing**: Clients can request republishing of their records to ensure they remain available on the [[DNS]].
+13 | 3. **Querying**: Clients query the [[DNS]] for resource records, either directly or through a relay.
+14 | 
+15 | ## Key Technologies
+16 | 
+17 | - **[[Mainline DHT]]**: PKARR uses the Mainline [[DNS]] as its overlay network, specifically BEP44 for storing ephemeral data.
+18 | - **[[DNS]] over [[HTTPS]] ([[DoH]])**: For applications unaware of PKARR, DoH is used to resolve domains.
+19 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/Pkarr/ELI5.md:
+--------------------------------------------------------------------------------
+ 1 | ## ELI5: PKARR with Mainline DHT
+ 2 | 
+ 3 | Imagine you have a super cool secret club, and everyone in the club needs a way to find each other and communicate without relying on anyone else to organize things. You all have secret codes that tell people who you are, but how do you find where everyone is without a central place telling you?
+ 4 | 
+ 5 | This is where **PKARR** and **Mainline DHT** come in.
+ 6 | 
+ 7 | **PKARR** is like a magic address book. Instead of having a central directory, every member of the secret club can create their own identity using special keys, like giving yourself a secret nickname that no one else can copy. With these keys, everyone in the club knows exactly who you are, and they can recognize you by your secret name. But there’s no single person in charge of this address book—everyone has their own copy.
+ 8 | 
+ 9 | Now, imagine you want to send messages to your friends, but you don’t know where they’re hanging out today. This is where **Mainline DHT** (Distributed Hash Table) comes in. It’s like a giant treasure map that the whole club shares, except instead of finding treasure, it tells you where each of your friends are. Mainline DHT helps everyone find each other without needing a central leader. It’s like everyone working together to keep the map up-to-date so anyone can see where everyone else is, no matter where they are.
+10 | 
+11 | - **Your Own Key-Based Identity**: PKARR lets you create your own unique identity without needing permission. You can join the network by making your own keys, and these keys make sure that no one can pretend to be you.
+12 | 
+13 | - **Finding Friends with DHT**: Mainline DHT is how you find other people in the network. It’s like a shared phone book where everyone adds their own contact info, so anyone can look up where to find you.
+14 | 
+15 | Together, **PKARR** and **Mainline DHT** mean that everyone in the club can find each other and communicate directly, without relying on any big organization to manage things. It’s all about keeping control in the hands of the people, making sure everyone can be found when they want to be, and keeping everything open and secure.
+16 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/notes/1.Adoption.md:
+--------------------------------------------------------------------------------
+ 1 | ## Pubky Adoption
+ 2 | 
+ 3 | This note is indicative and creative. There is no set on stone plans for realizing adoption, these are just ideas. Realizing the full potential of Pubky relies on network effects through mainstream user onboarding:
+ 4 | 
+ 5 | - Legacy centralized imports ease migration paths for established communities and profiles.
+ 6 | 
+ 7 | - Simplified wallet and key management avoids barriers through friendly UX.
+ 8 | 
+ 9 | - Default public profiles paired with granular privacy, encourage open participation.
+10 | 
+11 | - Progressive web apps ([PWA](https://web.dev/articles/what-are-pwas)) maintain familiar experience across any device.
+12 | 
+13 | - Incentivized discovery games spark initial engagements like following interesting accounts.
+14 | 
+15 | - Federation with aligned systems like Mastodon expands the userbase through existing clusters.
+16 | 
+17 | - Grassroots developers support localized languages/cultures for global inclusion.
+18 | 
+19 | - Documentation, scholarships and bounties lower the skill floor for contributing back to protocols.
+20 | 
+21 | Overall, Pubky relies on being ready and available at the right time and right place. Most likely users will only discover Pubky during a [[2.Censorship|Censorship]] attack.
+22 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/notes/2.Incentives.md:
+--------------------------------------------------------------------------------
+ 1 | ## Pubky Incentives
+ 2 | 
+ 3 | This note is indicative and creative. Nothing is planned concretely for Pubky incentives. For the Pubky ecosystem to function at scale, it relies on incentives that encourage participation and uphold the user experience:
+ 4 | 
+ 5 | - Data storage fees pay stores for availability and throughput.
+ 6 | 
+ 7 | - Tipping and subscriptions reward high-quality contributors and curators.
+ 8 | 
+ 9 | - Advertising supports free-tier services and indexes through contextual/non-intrusive formats.
+10 | 
+11 | - Validation bonds and slashing conditions secure protocol compliance.
+12 | 
+13 | - Data marketplace sales enable professional content creators to profit directly.
+14 | 
+15 | - Job boards and service directories create opportunities within the emerging peer-to-peer economy.
+16 | 
+17 | Together, these push the system towards collective benefit over individual maximization.
+18 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Pubky Core/notes/3.Protocols.md:
+--------------------------------------------------------------------------------
+ 1 | ## Pubky Protocols
+ 2 | 
+ 3 | This note is indicative and highly creative. We have not yet explored much about the open protocols that enable independent implementations:
+ 4 | 
+ 5 | **Pubky Data** - Definition of normalized data schemas for user profiles, content types, relationships etc. Allows unified querying across services.
+ 6 | 
+ 7 | **Pubky Sync** - Mechanism for efficiently synchronizing incremental changes between data stores, aggregators, and consumers using Merkle trees.
+ 8 | 
+ 9 | **Pubky Search** - Format for full-text search indices and queries across aggregated Pubky Data. Enables cross-platform discovery.
+10 | 
+11 | **[Pubky Payments](Paykit.md)** - Decentralized and interoperable payment protocol for microtransactions like tips, subscriptions and purchasing goods/services.
+12 | 
+13 | **Pubky Identity** - Self-sovereign digital credentials for authentication without centralized authorities like usernames/passwords.
+14 | 
+15 | **Pubky Federation** - Standard for distributed moderation and cross-instance relationships between interconnected but independent communities.
+16 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/DHT.md:
+--------------------------------------------------------------------------------
+ 1 | # Distributed Hash Table
+ 2 | 
+ 3 | It is a decentralized key-value store that allows for efficient data retrieval in a distributed system. Unlike traditional databases, DHTs do not rely on a central server to manage data. Instead, they use a hash function to map keys to nodes in the network, enabling data to be stored and retrieved across multiple nodes.
+ 4 | 
+ 5 | A relevant example of DHT for Pubky is the [[Mainline DHT]] that is used primarily by the BitTorrent Network.
+ 6 | 
+ 7 | ## Key Features
+ 8 | 
+ 9 | - **Decentralization**: DHTs operate without a central authority, making them highly resilient to failures and [[Censorship|censorship]].
+10 | 
+11 | - **Scalability**: They can easily scale to accommodate more data and users by adding more nodes to the network.
+12 | 
+13 | - **Efficiency**: By distributing data across multiple nodes, DHTs can provide fast access to data without the need for a central server.
+14 | 
+15 | ## Applications
+16 | 
+17 | DHTs are widely used in various applications, including:
+18 | 
+19 | - **P2P Networks**: They are the backbone of peer-to-peer (P2P) networks, enabling the sharing of files and resources among users.
+20 | 
+21 | - **Content Delivery Networks (CDNs)**: DHTs help in efficiently distributing content across a global network of servers, improving load balancing and reducing latency.
+22 | 
+23 | ## Challenges
+24 | 
+25 | Despite their advantages, DHTs face several challenges, including:
+26 | 
+27 | - **Security**: Ensuring data privacy and integrity in a decentralized environment.
+28 | 
+29 | - **Consistency**: Achieving consistency across the distributed network, especially in the presence of node failures or network partitions.
+30 | 
+31 | - **Performance**: Balancing the trade-off between data distribution and access latency.
+32 | 
+33 | DHTs represent a significant advancement in distributed systems, offering a scalable and efficient solution for data storage and retrieval in decentralized environments.
+34 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/DNS.md:
+--------------------------------------------------------------------------------
+1 | # Domain Name System
+2 | 
+3 | It translates human-readable domain names (e.g., www.example.com) into IP addresses that computers use to identify each other on the network. This process simplifies internet navigation by allowing users to access websites using memorable names instead of numerical addresses.
+4 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/DoH.md:
+--------------------------------------------------------------------------------
+ 1 | # DNS over HTTPS
+ 2 | 
+ 3 | It is a security protocol that encrypts [[DNS]] queries and responses, enhancing privacy and security by preventing eavesdropping and tampering. In the context of [[0.Introduction|PKARR]], DoH plays a crucial role in ensuring that [[DNS]] queries made to resolve public-key addresses are secure and cannot be intercepted or manipulated by third parties.
+ 4 | 
+ 5 | ### Key Points about DoH
+ 6 | 
+ 7 | - **Encryption**: DoH encrypts [[DNS]] traffic, making it unreadable to anyone who might intercept the data. This is achieved by sending [[DNS]] queries and responses over [[HTTPS]] connections, utilizing port 443, the standard port for [[HTTPS]] traffic.
+ 8 | 
+ 9 | - **Privacy and Security**: By encrypting [[DNS]] queries, DoH significantly increases privacy and security. It prevents Internet Service Providers (ISPs), governments, and hackers from monitoring or altering [[DNS]] requests.
+10 | 
+11 | - **Standardization and Adoption**: DoH has been adopted by major internet brands, including Apple, Microsoft, and Google, to enhance online security. It was first implemented by Mozilla in 2018, and since then, it has become a standard for secure [[DNS]] communication.
+12 | 
+13 | - **Compatibility and Implementation**: DoH can be enabled in browsers and operating systems, allowing users to benefit from its privacy and security features. However, it's important to ensure compatibility with existing cybersecurity solutions, as enabling DoH might impact [[DNS]] traffic filtering tools.
+14 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/HTTPS.md:
+--------------------------------------------------------------------------------
+ 1 | # Hypertext Transfer Protocol Secure
+ 2 | 
+ 3 | It is an extension of HTTP that encrypts communication over a computer network, enhancing security and privacy. It uses TLS (Transport Layer Security) or SSL (Secure Sockets Layer) for encryption, protecting against eavesdropping and tampering. HTTPS is essential for securely transmitting sensitive data, such as login credentials and financial transactions, ensuring the authenticity of websites and the privacy of user communications.
+ 4 | 
+ 5 | ## Key Features
+ 6 | 
+ 7 | - **Encryption**: Secures data in transit using TLS/SSL, making it unreadable to interceptors.
+ 8 | 
+ 9 | - **Authentication**: Verifies the identity of websites and services using digital certificates, ensuring users are communicating with the intended party.
+10 | 
+11 | - **Protection**: Guards against man-in-the-middle attacks and [[DNS]] spoofing, safeguarding user data and privacy.
+12 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/Key Pair.md:
+--------------------------------------------------------------------------------
+ 1 | A cryptography key pair consists of two related but distinct cryptographic keys:
+ 2 | 
+ 3 | 1. **Private Key**: A secret key that is used to decrypt, sign, or authenticate data. It's called "private" because it should be kept confidential and secure to prevent unauthorized access.
+ 4 | 2. **Public Key**: A publicly accessible key that is used to encrypt, verify, or authenticate data. It's called "public" because it can be shared freely without compromising the security of the system.
+ 5 | 
+ 6 | ## How do key pairs work?
+ 7 | 
+ 8 | Here's a simplified overview of how key pairs are used in various cryptographic scenarios:
+ 9 | 
+10 | ### Encryption
+11 | 
+12 | - Alice wants to send a secure message to Bob.
+13 | - Bob generates a key pair and shares his public key with Alice.
+14 | - Alice uses Bob's public key to encrypt the message.
+15 | - Bob uses his private key to decrypt the message.
+16 | 
+17 | ### Digital Signatures
+18 | 
+19 | - Alice wants to send a document to Bob and prove its authenticity.
+20 | - Alice generates a key pair and uses her private key to sign the document.
+21 | - Bob uses Alice's public key to verify the signature and ensure the document hasn't been tampered with.
+22 | 
+23 | ### Authentication
+24 | 
+25 | - Alice wants to access a secure system or service.
+26 | - The system generates a key pair and shares its public key with Alice.
+27 | - Alice uses the system's public key to encrypt a challenge or password.
+28 | - The system uses its private key to decrypt the challenge or password and authenticate Alice.
+29 | 
+30 | ### Key Pair Properties
+31 | 
+32 | - **Asymmetric**: Key pairs are asymmetric, meaning that the private key is not easily derived from the public key.
+33 | - **Mathematical relationship**: The private and public keys are mathematically related, allowing for encryption, decryption, signing, and verification.
+34 | - **Unique**: Each key pair is unique, ensuring that data encrypted with a public key can only be decrypted with the corresponding private key.
+35 | 
+36 | ### Types of Key Pairs
+37 | 
+38 | - **RSA (Rivest-Shamir-Adleman)**: A popular algorithm used for encryption, decryption, and digital signatures.
+39 | - **Elliptic Curve Cryptography (ECC)**: A more modern algorithm used for encryption, decryption, and digital signatures, offering better security with smaller key sizes.
+40 | - **Diffie-Hellman (DH)**: A key exchange algorithm used to establish a shared secret key between two parties.
+41 | 
+42 | In summary, cryptography key pairs are a fundamental component of secure online communications, enabling encryption, digital signatures, and authentication. By using a pair of related but distinct keys, key pairs provide a secure way to protect data and ensure its authenticity.
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/Mainline DHT.md:
+--------------------------------------------------------------------------------
+ 1 | Mainline [[DHT]] is a standard Distributed Hash Table (DHT) implementation widely used in the BitTorrent network, based on the [Kademlia](https://en.wikipedia.org/wiki/Kademlia) protocol. This decentralized system allows for efficient data storage and retrieval across a vast network of nodes, making it highly resilient and scalable.
+ 2 | 
+ 3 | ## Key Features
+ 4 | 
+ 5 | - **Decentralization**: It operates without a central authority, enhancing its resilience against failures and [[Censorship|censorship]].
+ 6 | - **Scalability**: It can easily scale to accommodate more data and users by adding more nodes to the network.
+ 7 | - **Efficiency**: By distributing data across multiple nodes, Mainline DHT provides fast access to data without the need for a central server.
+ 8 | 
+ 9 | ## Applications
+10 | 
+11 | - **BitTorrent Network**: Mainline DHT adds tracker capabilities to each peer in the BitTorrent network, enhancing its resilience and reducing dependency on centralized trackers.
+12 | - **Peer-to-Peer File Sharing**: Beyond BitTorrent, DHTs like Mainline are used for instant messaging, name resolution, and other peer-to-peer file sharing applications.
+13 | 
+
+
+--------------------------------------------------------------------------------
+/Explore/Technologies/Paykit.md:
+--------------------------------------------------------------------------------
+1 | Paykit abstracts and automates any payment method behind a single, static public key. The public key belongs to a Pubky instance and points to a **[[Homeservers|homeserver]]** containing all supported payment endpoints. Paykit enables applications where users pay directly to profiles, so offers a very intuitive experience, particularly when multiple payment methods are possible within the system.
+2 | 
+
+
+--------------------------------------------------------------------------------
+/Readme.md:
+--------------------------------------------------------------------------------
+ 1 | # Pubky Knowledge Base
+ 2 | 
+ 3 | Welcome to the Pubky Knowledge base - we are excited to have you here.
+ 4 | 
+ 5 | ### 🔗 [Access the Pubky Knowledge Base](https://pubky.org/)
+ 6 | 
+ 7 | > **The current Knowledge base is a mix of reality, dreams, visions, actuality and plans.**
+ 8 | 
+ 9 | The Knowledge Base is a resource that encompasses our broad vision for Pubky, along with high-level explanations of the architecture for both the Pubky Protocol and the Pubky App, as well as key concepts. Use this as your go-to guide to help you navigate unfamiliar topics and find answers to the most common questions.
+10 | 
+11 | ## 📝 Contributing Knowledge
+12 | 
+13 | We kindly ask you to help us improve this documentation for a clearer, more accurate and concise knowledge base. Simply open a PR!
+14 | 
+15 | ## 🏗️ Build static Quartz site
+16 | 
+17 | In order to build the static website from this obsidian vault, ensure that [NodeJS](https://nodejs.org/en/download/prebuilt-installer) is installed on your system.
+18 | 
+19 | 1. Enter in the terminal to the project root and access to the `/quartz` directory (`cd quartz`)
+20 | 2. Install dependencies with `npm install`
+21 | 3. Finally build the site with `npm run docs` and check it out at [localhost:8080](http://localhost:8080/)
+22 | 
+
+
+--------------------------------------------------------------------------------
+/TLDR.md:
+--------------------------------------------------------------------------------
+1 | ### Pubky App
+2 | 
+3 | [[Explore/Pubky App/Introduction|Pubky App]] is an open-source web application that helps users publish and consume Pubky homeserver data within a user experience that merges the features of popular social media, search, and publishing apps.
+4 | 
+5 | Architecture overview.
+6 | 
+7 | ![arch](Explore/images/pubky-arch.png)
+8 | 
+
+
+--------------------------------------------------------------------------------
+/The vision of Pubky.md:
+--------------------------------------------------------------------------------
+ 1 | # Decentralizing Our Future
+ 2 | 
+ 3 | Imagine a future where our online relationships are no longer dictated by corporate giants or state-controlled systems, where you decide how to connect, who to trust, and where to store your data. This is the vision of **Pubky**: a decentralized, user-first web that breaks the toxic cycle of dependency on **Big Tech**, **Big State**, and **Big Banks**.
+ 4 | 
+ 5 | **Pubky** is not just a platform—it is an ecosystem designed to provide tools for communication, social coordination, identity management, and, eventually, financial freedom, all in one interconnected framework. Pubky will harness the power of **decentralized identity**, **censorship resistance**, **semantic social graphs**, and **Bitcoin and Lightning Network technology** to create an open web that prioritizes user autonomy.
+ 6 | 
+ 7 | ## Replacing Big Tech: Credible Exit, Censorship Resistance, and User-Controlled Experience
+ 8 | 
+ 9 | Big Tech platforms like social media giants use algorithms that limit freedom, exploit engagement, and control the flow of information. Pubky proposes a different kind of web—one built on **Semantic Social Graphs** and **self-sovereign identities**. Instead of opaque algorithms deciding what is relevant to you, **Semantic Social Graphs** and **PKARR** give users full control over their digital interactions. This system gives control back to individuals, helping replace our toxic relationship with Big Tech.
+10 | 
+11 | - **PKARR for Credible Exit and Censorship Resistance**: With **PKARR**, users can create decentralized identities that allow them to leave any service without losing their content, identity, or relationships. PKARR also makes censorship resistance possible by ensuring that users' identities are independent of any specific server. This means users can migrate to other services when needed, maintaining their control and avoiding censorship.
+12 | 
+13 | - **Semantic Social Graphs for Personalized Control**: Semantic Social Graphs empower users by allowing them to enrich their relationships, determine trustworthiness, and organize content in a meaningful way. Users choose what they see, whom they trust, and how information flows within their network.
+14 | 
+15 | - **Pubky App for User-Controlled Feeds**: The **Pubky App** allows users to decide which data appears in their feeds. Unlike traditional platforms where algorithms push content for maximum engagement, Pubky gives users the power to tag, filter, and prioritize the content that matters most to them. This approach replaces toxic algorithms with user-defined preferences, ensuring a healthier online experience.
+16 | 
+17 | - **Homeservers for Decentralized Hosting**: **Homeservers** allow for decentralized data hosting and competitive hosting services by enabling users to migrate away from any server that changes its policies or restricts their content. This means that censorship is anticipated and dealt with, allowing users to keep control over their digital presence.
+18 | 
+19 | ## Replacing Big State: Self-Sovereign Identity and Peer Regulation
+20 | 
+21 | Governments often use centralized systems to control speech, monitor user activity, and dictate identity management. Pubky provides an alternative—a decentralized network that makes censorship impractical and gives users **self-sovereign identity**. With Pubky, **PKARR** (Public Key Addressable Roles and Resources), **Mainline DHT**, and **Semantic Social Graphs** ensure that users are empowered to self-regulate, verify authenticity, and maintain control of their identities without relying on centralized authorities. This means:
+22 | 
+23 | - **Self-Sovereign Identity with PKARR**: Pubky allows users to create key-based identities using PKARR, giving them the freedom to establish and manage their identities without permission from any central entity. Users can choose whether to remain anonymous or become publicly identifiable, and no central authority can revoke or control their identity.
+24 | 
+25 | - **Decentralized Directory with Mainline DHT**: Mainline DHT acts as a distributed directory, helping users locate and connect with each other without relying on a centralized server. This peer-to-peer system ensures that users are always discoverable by those they trust, even in the face of censorship attempts.
+26 | 
+27 | - **Semantic Social Graphs for Peer Regulation**: Pubky's Semantic Social Graphs are key to creating an environment of self-regulation among users. By allowing users to add context, trust levels, and tags to their connections, Pubky provides the foundation for automating business logic on top of graph metadata and relationships. This means that users can set the rules for how they interact with others, creating systems of accountability and shared trust that do not depend on external regulation.
+28 | 
+29 | In this way, Pubky replaces the need for a centralized authority (the "Big State") by empowering users to be self-sovereign and enabling communities to regulate themselves. Pubky provides the tools to make censorship difficult and autonomy possible—giving users the power to govern their online interactions and identities independently.
+30 | 
+31 | ## Replacing Big Banks: Competing with Fiat and Enabling Financial Freedom
+32 | 
+33 | Beyond communication and social interaction, Synonym also seeks to empower individuals financially. Our reliance on **Big Banks** and centralized financial systems means losing autonomy over our own wealth. Pubky envisions a future where financial freedom is possible through the use of  **Bitcoin** and the **Lightning Network** to decouple payments from hosted platforms and middlemen.
+34 | 
+35 | - **Bitcoin** creates competition for fiat currencies and traditional speculative investments by offering a decentralized, permissionless currency. Users are in full control of their funds, able to send or receive value directly from their own wallets, free from the constraints of centralized banking institutions.
+36 | 
+37 | - **Bitkit Mobile Wallet**: Synonym, creators of Pubky, also offers the **Bitkit** mobile wallet, which supports **Bitcoin**, **Lightning**, and soon **Pubky** features, providing a unified solution for users to manage their identities, financial transactions, and online presence—all in a decentralized manner.
+38 | 
+39 | - Commerce features and tools are planned for future versions of Pubky, with a long term goal of a totally dynamic digital social economy!
+40 | 
+41 | ## A Future of Freedom and Autonomy
+42 | 
+43 | Our vision is simple: to build a digital world where individuals are in charge, rather than corporations or governments. By integrating decentralized identities, censorship-resistant technologies, and financial independence, we can replace our toxic dependency on centralized powers with an open, user-controlled web.
+44 | 
+45 | Imagine a future where your data, your identity, and your financial assets are truly yours. Where you decide what to share, whom to trust, and how to connect—without any company or government watching over your shoulder. Synonym is building this future, creating an internet that works for people, not against them.
+46 | 
+47 | Join us in this movement toward decentralization, censorship resistance, and true digital autonomy.
+48 | 
+
+
+--------------------------------------------------------------------------------
+/index.md:
+--------------------------------------------------------------------------------
+ 1 | ---
+ 2 | title: "Pubky Knowledge Base"
+ 3 | ---
+ 4 | 
+ 5 | ## Welcome to the Pubky Knowledge Base
+ 6 | 
+ 7 | This is a knowledge base for the Pubky platform, which includes [[Explore/Pubky Core/Introduction|Pubky Core]], [[0.Introduction|PKARR]] and [[Explore/Pubky App/Introduction|Pubky App]]. These documents are a work in progress, much like Pubky's protocols and applications!
+ 8 | 
+ 9 | ## What is Pubky?
+10 | 
+11 | Pubky attempts to unlock the web by realizing our vision for a key-based, self-regulating web that puts users in control.
+12 | 
+13 | So far, Pubky does this by combining practical decentralized routing & identity ([[0.Introduction|PKARR]]), with simple interoperable hosting ([[Homeservers|Homeservers]]) that allow for [[Censorship|censorship]] resistance and a [[Credible Exit|credible exit]], as well as a publishing application, Pubky App, that facilitates the creation of a [[Semantic Social Graph|Semantic Social Graph]], which can be used for filtering, discovery, matching and coordination.
+14 | 
+15 | Learn more about the overall vision here: [[The vision of Pubky|The Vision of Pubky]]
+16 | 
+17 | ## Get Started
+18 | 
+19 | 1. [[0.Introduction|Getting Started with PKARR]] - If your main interest is using the most decentralized, key-based identity & routing method, start with PKARR.
+20 | 2. [[Explore/Pubky Core/Introduction|Pubky Core - Introduction]] - If you want run your own Homeserver and apply PKARR, check out Pubky Core.
+21 | 3. [[Explore/Pubky App/Introduction|Pubky App - Introduction]] - If you want to dig into the application, indexer, etc, start here!
+22 | 
+
+
+--------------------------------------------------------------------------------
