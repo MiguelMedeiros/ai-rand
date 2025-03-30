@@ -72,7 +72,7 @@ async fn generate_response(content: &str) -> Result<String> {
     let client = reqwest::Client::new();
 
     let request = ChatRequest {
-        model: "gpt-3.5-turbo".to_string(),
+        model: "gpt-4o-mini".to_string(),
         messages: vec![
             ChatMessage {
                 role: "system".to_string(),
