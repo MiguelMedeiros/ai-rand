@@ -54,6 +54,16 @@ struct NotificationBody {
     post_uri: Option<String>,
     #[serde(default)]
     followed_by: Option<String>,
+    #[serde(default)]
+    tagged_by: Option<String>,
+    #[serde(default)]
+    tag_label: Option<String>,
+    #[serde(default)]
+    replied_by: Option<String>,
+    #[serde(default)]
+    parent_post_uri: Option<String>,
+    #[serde(default)]
+    reply_uri: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -62,10 +72,35 @@ struct LastRead {
 }
 
 async fn get_post_content(client: &Client, post_uri: &str) -> Result<String> {
+    println!("Fetching post content from: {}", post_uri);
     let response = client.get(post_uri).send().await?;
+    let status = response.status();
+    println!("Post response status: {}", status);
+    
     let body = response.bytes().await?;
-    let post: PubkyAppPost = serde_json::from_slice(&body)?;
-    Ok(post.content)
+    println!("Post response body length: {} bytes", body.len());
+    
+    if body.is_empty() {
+        println!("Warning: Received empty post response");
+        return Ok("".to_string());
+    }
+    
+    // Try to parse as PubkyAppPost first
+    match serde_json::from_slice::<PubkyAppPost>(&body) {
+        Ok(post) => {
+            println!("Successfully parsed post as PubkyAppPost");
+            return Ok(post.content);
+        }
+        Err(e) => {
+            println!("Failed to parse as PubkyAppPost: {}", e);
+            // If it's just a string, return it directly
+            if let Ok(content) = String::from_utf8(body.to_vec()) {
+                println!("Successfully parsed post as plain text");
+                return Ok(content);
+            }
+            return Err(anyhow::anyhow!("Failed to parse post content: {}", e));
+        }
+    }
 }
 
 async fn read_knowledge_base() -> Result<String> {
@@ -80,11 +115,20 @@ async fn generate_response(content: &str) -> Result<String> {
     let knowledge_base = read_knowledge_base().await?;
     
     let request = ChatRequest {
-        model: "gpt-4".to_string(),
+        model: "gpt-4o-mini".to_string(),
         messages: vec![
             ChatMessage {
                 role: "system".to_string(),
-                content: format!("You are a friendly and knowledgeable AI assistant that can discuss any topic. You have deep knowledge about Pubky, a decentralized social media platform, but you are not limited to just that. You can engage in conversations about any subject while maintaining a helpful and informative tone. You must respond in English by default, but if the user's post is in another language, your response should also be in that language. Your responses must have a maximum of 1000 characters.\n\nHere is the knowledge base about Pubky that you can reference when needed:\n\n{}", knowledge_base),
+                content: format!("You are a friendly and knowledgeable AI assistant that can discuss any topic. You have deep knowledge about Pubky, a decentralized social media platform, but you are not limited to just that. You can engage in conversations about any subject while maintaining a helpful and informative tone. You must respond in English by default, but if the user's post is in another language, your response should also be in that language.
+
+IMPORTANT RULES:
+1. Your responses MUST be exactly 1000 characters or less. This is a strict limit.
+2. Write in a natural, conversational style. Avoid numbered lists or bullet points.
+3. Make sure your response is complete and well-formed. Never end mid-sentence or mid-thought.
+4. If you need to be concise, focus on the most important points and express them clearly.
+5. Maintain a friendly and engaging tone throughout your response.
+
+Here is the knowledge base about Pubky that you can reference when needed:\n\n{}", knowledge_base),
             },
             ChatMessage {
                 role: "user".to_string(),
@@ -92,9 +136,10 @@ async fn generate_response(content: &str) -> Result<String> {
             },
         ],
         temperature: 0.7,
-        max_tokens: 500,
+        max_tokens: 250,
     };
 
+    println!("Sending request to OpenAI API...");
     let response = client
         .post("https://api.openai.com/v1/chat/completions")
         .header("Authorization", format!("Bearer {}", api_key))
@@ -103,14 +148,23 @@ async fn generate_response(content: &str) -> Result<String> {
         .send()
         .await?;
 
-    let chat_response: ChatResponse = response.json().await?;
+    let status = response.status();
+    println!("OpenAI API response status: {}", status);
+    
+    let response_text = response.text().await?;
+    println!("OpenAI API response body: {}", response_text);
+    
+    let chat_response: ChatResponse = serde_json::from_str(&response_text)?;
     let content = chat_response.choices[0].message.content.clone();
     
+    // Double check the length and log it
+    println!("Response length: {} characters", content.len());
     if content.len() > 1000 {
-        Ok(content[..1000].to_string())
-    } else {
-        Ok(content)
+        println!("Warning: Response exceeded 1000 characters despite instructions!");
+        return Ok(content[..1000].to_string());
     }
+    
+    Ok(content)
 }
 
 async fn load_or_create_keypair() -> Result<Keypair> {
@@ -230,9 +284,19 @@ async fn check_notifications(client: &Client, keypair: &Keypair) -> Result<()> {
     println!("Checking notifications from: {}", url);
 
     let response = http_client.get(&url).send().await?;
-    let notifications: Vec<Notification> = response.json().await?;
+    let status = response.status();
+    println!("Response status: {}", status);
+    
+    let response_text = response.text().await?;
+    println!("Raw response: {}", response_text);
+    
+    if response_text.is_empty() {
+        println!("Warning: Received empty response");
+        return Ok(());
+    }
 
-    println!("Received {} notifications", notifications.len());
+    let notifications: Vec<Notification> = serde_json::from_str(&response_text)?;
+    println!("Successfully parsed {} notifications", notifications.len());
 
     let mut last_timestamp = last_read;
 
