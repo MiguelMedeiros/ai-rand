@@ -229,27 +229,6 @@ async fn create_profile(client: &Client, keypair: &Keypair) -> Result<()> {
     Ok(())
 }
 
-// async fn create_hello_world_post(client: &Client, keypair: &Keypair) -> Result<()> {
-//     let timestamp = Timestamp::now();
-//     let post = PubkyAppPost {
-//         content: "Hello World".to_string(),
-//         kind: PubkyAppPostKind::Short,
-//         parent: None,
-//         embed: None,
-//         attachments: None,
-//     };
-
-//     let post_json = serde_json::to_string(&post)?;
-//     let url = format!("pubky://{}/pub/pubky.app/posts/{}", keypair.public_key(), timestamp);
-    
-//     client.put(&url)
-//         .body(post_json.as_bytes().to_vec())
-//         .send()
-//         .await?;
-
-//     println!("Post created successfully!");
-//     Ok(())
-// }
 
 async fn get_last_read(client: &Client, keypair: &Keypair) -> Result<i64> {
     let url = format!("pubky://{}/pub/pubky.app/last_read", keypair.public_key());
