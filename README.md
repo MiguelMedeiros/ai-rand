@@ -70,6 +70,20 @@ Notes:
 - Empty/invalid `last_read`: if absent on first run, ensure your homeserver allows writing it; the bot updates it after processing.
 - Nexus connectivity: confirm `NEXT_PUBLIC_NEXUS` is reachable and returns notifications for the bot user.
 
+### Docker
+
+To run with Docker:
+
+```bash
+# Build and start
+docker-compose up -d
+
+# Logs
+docker-compose logs -f ai-rand-bot
+```
+
+See `DOCKER.md` for more details.
+
 ### Security
 - Never commit real secrets. Keep `.env` local.
 - Rotate `OPENAI_API_KEY` and regenerate mnemonics if leaked.

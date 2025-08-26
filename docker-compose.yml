@@ -1,0 +1,5 @@
+services:
+  ai-rand-bot:
+    build: .
+    container_name: ai-rand-bot
+    restart: unless-stopped
